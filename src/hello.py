@@ -1,1 +1,7 @@
-print("Hello from databricks-github-action!")
+# Databricks notebook source
+
+print("Hello World")
+
+# COMMAND ----------
+
+print("Second Cell")
