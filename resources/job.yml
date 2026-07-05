@@ -10,8 +10,3 @@ resources:
             notebook_path: ../src/hello.py
 
           # existing_cluster_id: YOUR_CLUSTER_ID
-
-      schedule:
-        quartz_cron_expression: "0 */2 * * * ?"
-        timezone_id: "Asia/Kolkata"
-        pause_status: PAUSED
