@@ -8,5 +8,5 @@ targets:
   dev:
     default: true
 
-    workspace:
-      host: ${env.DATABRICKS_HOST}
+    # workspace:
+    #   host: ${env.DATABRICKS_HOST}
