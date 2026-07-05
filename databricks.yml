@@ -12,4 +12,4 @@ targets:
     #   host: ${env.DATABRICKS_HOST}
 
 run_as:
-  service_principal_name: deployment-sp
+  service_principal_name: f9f96bff-7756-487f-9e00-0353ebf5935d
