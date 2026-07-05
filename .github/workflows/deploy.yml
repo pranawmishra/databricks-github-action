@@ -1,4 +1,4 @@
-name: Deploy to Databricks
+name: Deploy Bundle
 
 on:
   push:
@@ -7,21 +7,19 @@ on:
 
 jobs:
   deploy:
+
     runs-on: ubuntu-latest
+
+    env:
+      DATABRICKS_HOST: ${{ secrets.DATABRICKS_HOST }}
+      DATABRICKS_TOKEN: ${{ secrets.DATABRICKS_TOKEN }}
 
     steps:
 
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Install Databricks CLI
-        uses: databricks/setup-cli@main
+      - uses: databricks/setup-cli@main
 
-      - name: Configure Authentication
-        run: |
-          echo "DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST }}" >> $GITHUB_ENV
-          echo "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}" >> $GITHUB_ENV
+      - run: databricks bundle validate
 
-      - name: Upload Notebook
-        run: |
-          databricks workspace import-dir notebooks /Shared/github-demo --overwrite
+      - run: databricks bundle deploy

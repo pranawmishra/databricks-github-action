@@ -1,0 +1,12 @@
+bundle:
+  name: dab-demo
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    default: true
+
+    workspace:
+      host: ${env.DATABRICKS_HOST}

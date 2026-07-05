@@ -1,0 +1,12 @@
+resources:
+  jobs:
+    hello_job:
+      name: Hello Job
+
+      tasks:
+        - task_key: hello_task
+
+          notebook_task:
+            notebook_path: ../src/hello.py
+
+          # existing_cluster_id: YOUR_CLUSTER_ID
