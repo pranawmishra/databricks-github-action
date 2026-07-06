@@ -4,6 +4,10 @@ bundle:
 include:
   - resources/*.yml
 
+variables:
+  catalog_name:
+    description: Unity Catalog Name
+
 targets:
   dev:
     default: true
