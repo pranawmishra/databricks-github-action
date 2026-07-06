@@ -4,6 +4,7 @@ bundle:
 include:
   - resources/job.yml
   - resources/schemas.yml
+  - resources/volume.yml
 
 variables:
   catalog_name:
@@ -20,6 +21,7 @@ targets:
     variables:
       catalog_name: dev_catalog
       schema_name: bronze
+      volume_name: contracts_volume
       # catalog_storage_root: "abfss://<container>@<storage-account>.dfs.core.windows.net/dev_catalog"
 
     run_as:
