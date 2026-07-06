@@ -10,8 +10,8 @@ variables:
     description: Unity Catalog Name
   schema_name:
     description: Schema name within the catalog
-  catalog_storage_root:
-    description: Storage root path for the catalog (must be under a registered UC external location)
+  # catalog_storage_root:
+  #   description: Storage root path for the catalog (must be under a registered UC external location)
 
 targets:
   dev:
