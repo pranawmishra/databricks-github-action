@@ -2,11 +2,16 @@ bundle:
   name: dab-demo
 
 include:
-  - resources/*.yml
+  - resources/job.yml
+  - resources/schemas.yml
 
 variables:
   catalog_name:
     description: Unity Catalog Name
+  schema_name:
+    description: Schema name within the catalog
+  catalog_storage_root:
+    description: Storage root path for the catalog (must be under a registered UC external location)
 
 targets:
   dev:
@@ -14,6 +19,8 @@ targets:
 
     variables:
       catalog_name: dev_catalog
+      schema_name: bronze
+      # catalog_storage_root: "abfss://<container>@<storage-account>.dfs.core.windows.net/dev_catalog"
 
     run_as:
       service_principal_name: f9f96bff-7756-487f-9e00-0353ebf5935d

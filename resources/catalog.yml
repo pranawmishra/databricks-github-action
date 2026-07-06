@@ -2,4 +2,5 @@ resources:
   catalogs:
     main_catalog:
       name: ${var.catalog_name}
+      storage_root: ${var.catalog_storage_root}
       comment: Catalog managed by Databricks Asset Bundle
