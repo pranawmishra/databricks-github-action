@@ -11,6 +11,8 @@ variables:
     description: Unity Catalog Name
   schema_name:
     description: Schema name within the catalog
+  volume_name:
+    description: Volume name within the schema
   # catalog_storage_root:
   #   description: Storage root path for the catalog (must be under a registered UC external location)
 
