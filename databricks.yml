@@ -8,5 +8,8 @@ targets:
   dev:
     default: true
 
+    variables:
+      catalog_name: dev_catalog
+
     run_as:
       service_principal_name: f9f96bff-7756-487f-9e00-0353ebf5935d
