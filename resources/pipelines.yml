@@ -8,4 +8,6 @@ resources:
       libraries:
         - notebook:
             path: ../src/bronze_table.py
+        - notebook:
+            path: ../src/silver_tables.sql
       continuous: false
