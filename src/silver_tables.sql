@@ -1,3 +1,5 @@
+-- Databricks notebook source
+
 CREATE OR REFRESH LIVE TABLE raw_customers (
   customer_id STRING NOT NULL,
   name STRING,
