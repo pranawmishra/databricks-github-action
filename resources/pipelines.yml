@@ -4,6 +4,7 @@ resources:
       name: bronze_ingestion_pipeline
       catalog: ${var.catalog_name}
       target: ${var.schema_name}
+      serverless: true
       libraries:
         - notebook:
             path: ../src/bronze_table.py
