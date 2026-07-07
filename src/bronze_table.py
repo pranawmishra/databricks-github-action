@@ -1,3 +1,5 @@
+# Databricks notebook source
+
 import dlt
 from pyspark.sql.types import StructType, StructField, StringType, TimestampType
 
