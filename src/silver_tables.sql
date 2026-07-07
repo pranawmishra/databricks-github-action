@@ -6,9 +6,11 @@ CREATE OR REFRESH LIVE TABLE raw_customers (
   created_at TIMESTAMP
 )
 COMMENT "Raw customer data"
+-- Table structure only — WHERE 1=0 ensures no rows are loaded
 AS SELECT
   customer_id,
   name,
   email,
   CAST(created_at AS TIMESTAMP) AS created_at
 FROM json.`/Volumes/dev_catalog/bronze/landing/customers`
+WHERE 1=0

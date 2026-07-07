@@ -14,9 +14,12 @@ events_schema = StructType([
     comment="Raw event data"
 )
 def raw_events():
-    return (
-        spark.read
-        .schema(events_schema)
-        .format("json")
-        .load("/Volumes/dev_catalog/bronze/landing/events")
-    )
+    # return (
+    #     spark.read
+    #     .schema(events_schema)
+    #     .format("json")
+    #     .load("/Volumes/dev_catalog/bronze/landing/events")
+    # )
+    
+    # Returns empty DataFrame with the defined schema — table structure only, no data loaded
+    return spark.createDataFrame([], events_schema)
