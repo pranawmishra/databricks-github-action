@@ -6,5 +6,5 @@ resources:
       target: ${var.schema_name}
       libraries:
         - notebook:
-            path: src/bronze_tables.py
+            path: ../src/bronze_tables.py
       continuous: false
