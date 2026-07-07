@@ -24,7 +24,8 @@ targets:
     variables:
       catalog_name: dev_catalog
       schema_name: bronze
-      volume_name: contracts_volume
+      contracts_volume_name: contracts_volume
+      landing_volume_name: landing
       # catalog_storage_root: "abfss://<container>@<storage-account>.dfs.core.windows.net/dev_catalog"
 
     run_as:

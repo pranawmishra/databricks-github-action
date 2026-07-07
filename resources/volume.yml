@@ -3,13 +3,13 @@ resources:
     contracts_volume:
       catalog_name: ${var.catalog_name}
       schema_name: ${var.schema_name}
-      name: ${var.volume_name}
+      name: ${var.contracts_volume_name}
       volume_type: MANAGED
       comment: Volume created using Databricks Asset Bundle
 
     landing:
       catalog_name: ${var.catalog_name}
       schema_name: ${var.schema_name}
-      name: ${var.volume_name}
+      name: ${var.landing_volume_name}
       volume_type: MANAGED
       comment: Volume created using Databricks Asset Bundle
