@@ -1,0 +1,10 @@
+resources:
+  pipelines:
+    bronze_pipeline:
+      name: bronze_ingestion_pipeline
+      catalog: ${var.catalog_name}
+      target: ${var.schema_name}
+      libraries:
+        - notebook:
+            path: ../src/bronze_tables.py
+      continuous: false

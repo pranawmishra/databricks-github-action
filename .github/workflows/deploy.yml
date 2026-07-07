@@ -23,3 +23,5 @@ jobs:
       - run: databricks bundle validate
 
       - run: databricks bundle deploy
+
+      - run: databricks bundle run bronze_pipeline

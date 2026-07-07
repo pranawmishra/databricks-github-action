@@ -5,6 +5,7 @@ include:
   - resources/job.yml
   - resources/schemas.yml
   - resources/volume.yml
+  - resources/pipeline.yml
 
 variables:
   catalog_name:
