@@ -72,7 +72,7 @@ def funnel_conversion():
 )
 def top_pages():
     return (
-        dlt.read("silver.o clean_clickstream")
+        dlt.read("silver.clean_clickstream")
         .filter(F.col("event_type") == "page_view")
         .groupBy("page_url")
         .agg(
