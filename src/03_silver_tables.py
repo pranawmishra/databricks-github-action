@@ -13,8 +13,7 @@ from pyspark.sql.window import Window
 @dlt.expect_or_drop("valid_user_id",   "user_id IS NOT NULL")
 @dlt.expect_or_drop("valid_event_time","event_time IS NOT NULL")
 @dlt.table(
-    name="clean_clickstream",
-    schema="silver",
+    name="silver.clean_clickstream",
     comment="Deduplicated, validated clickstream events with a processed_at audit column"
 )
 def clean_clickstream():
@@ -33,8 +32,7 @@ def clean_clickstream():
 @dlt.expect_or_drop("valid_customer_id", "customer_id IS NOT NULL")
 @dlt.expect_or_drop("valid_email",       "email IS NOT NULL AND email LIKE '%@%'")
 @dlt.table(
-    name="clean_customers",
-    schema="silver",
+    name="silver.clean_customers",
     comment="Validated customer records with normalised email addresses"
 )
 def clean_customers():
@@ -48,8 +46,7 @@ def clean_customers():
 # COMMAND ----------
 
 @dlt.table(
-    name="sessions",
-    schema="silver",
+    name="silver.sessions",
     comment="User sessions derived by 30-minute inactivity gap windowing on clean_clickstream"
 )
 def sessions():
