@@ -1,6 +1,16 @@
 resources:
   schemas:
     bronze_schema:
-      name: ${var.schema_name}
+      name: ${var.bronze_schema_name}
       catalog_name: ${var.catalog_name}
-      comment: Bronze layer schema managed by Databricks Asset Bundle
+      comment: Bronze layer schema — raw ingestion (managed by DAB)
+
+    silver_schema:
+      name: ${var.silver_schema_name}
+      catalog_name: ${var.catalog_name}
+      comment: Silver layer schema — cleaned and sessionised data (managed by DAB)
+
+    gold_schema:
+      name: ${var.gold_schema_name}
+      catalog_name: ${var.catalog_name}
+      comment: Gold layer schema — aggregated analytics tables (managed by DAB)

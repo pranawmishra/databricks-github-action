@@ -2,14 +2,14 @@ resources:
   volumes:
     contracts_volume:
       catalog_name: ${var.catalog_name}
-      schema_name: ${var.schema_name}
-      name: ${var.contracts_volume_name}
-      volume_type: MANAGED
-      comment: Volume created using Databricks Asset Bundle
+      schema_name: ${var.bronze_schema_name}  # Volumes must belong to a schema — bronze is correct since
+      name: ${var.contracts_volume_name}       # volumes are raw file storage (pre-ingestion), not processed data
+      volume_type: MANAGED                     # MANAGED = Databricks controls the storage location
+      comment: Raw file drop zone for contract documents (CSV/JSON/PDF)
 
     landing:
       catalog_name: ${var.catalog_name}
-      schema_name: ${var.schema_name}
-      name: ${var.landing_volume_name}
+      schema_name: ${var.bronze_schema_name}  # Same reasoning — landing volume holds raw JSON files written
+      name: ${var.landing_volume_name}         # by generate_clickstream.py before DLT reads them
       volume_type: MANAGED
-      comment: Volume created using Databricks Asset Bundle
+      comment: Raw file drop zone for clickstream events and customer records

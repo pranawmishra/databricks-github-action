@@ -1,15 +1,20 @@
 resources:
   jobs:
-    hello_job:
-      name: Hello Job
+    clickstream_job:
+      name: Clickstream Pipeline Job
 
       tasks:
-        - task_key: hello_task
-
+        - task_key: generate_data
+          description: "Generate synthetic clickstream + customer JSON data into the landing volume"
           notebook_task:
-            notebook_path: ../src/hello.py
+            notebook_path: ../src/01_generate_clickstream.py
 
-          # existing_cluster_id: YOUR_CLUSTER_ID
+        - task_key: run_pipeline
+          description: "Run the full Bronze → Silver → Gold DLT pipeline"
+          depends_on:
+            - task_key: generate_data
+          pipeline_task:
+            pipeline_id: ${resources.pipelines.clickstream_pipeline.id}
 
       schedule:
         quartz_cron_expression: "0 */2 * * * ?"

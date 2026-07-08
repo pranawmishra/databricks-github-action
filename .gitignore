@@ -1,3 +1,6 @@
+# Archived / deprecated files (not part of the active bundle)
+extra/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

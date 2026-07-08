@@ -1,13 +1,15 @@
 resources:
   pipelines:
-    bronze_pipeline:
-      name: bronze_ingestion_pipeline
-      catalog: ${var.catalog_name}
-      target: ${var.schema_name}
-      serverless: true
+    clickstream_pipeline:
+      name: clickstream_pipeline
+      catalog: ${var.catalog_name}       # Unity Catalog to publish all tables into
+      target: ${var.bronze_schema_name}  # Default schema — bronze tables land here (silver/gold override this per-table)
+      serverless: true                   # Run on Databricks serverless compute (no cluster to manage)
       libraries:
         - notebook:
-            path: ../src/bronze_table.py
+            path: ../src/02_bronze_table.py   # BRONZE — raw_clickstream, raw_customers
         - notebook:
-            path: ../src/silver_tables.sql
-      continuous: false
+            path: ../src/03_silver_tables.py  # SILVER — clean_clickstream, sessions, clean_customers
+        - notebook:
+            path: ../src/04_gold_tables.py    # GOLD   — daily_traffic_metrics, funnel_conversion, top_pages
+      continuous: false                  # Triggered mode — pipeline runs once per trigger, not always-on

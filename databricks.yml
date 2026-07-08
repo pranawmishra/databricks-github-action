@@ -6,12 +6,17 @@ include:
   - resources/schemas.yml
   - resources/volume.yml
   - resources/pipelines.yml
+  # catalog.yml intentionally excluded — dev_catalog is assumed to pre-exist in the workspace
 
 variables:
   catalog_name:
     description: Unity Catalog Name
-  schema_name:
-    description: Schema name within the catalog
+  bronze_schema_name:
+    description: Bronze schema name within the catalog
+  silver_schema_name:
+    description: Silver schema name within the catalog
+  gold_schema_name:
+    description: Gold schema name within the catalog
   contracts_volume_name:
     description: Contracts Volume name within the schema
   landing_volume_name:
@@ -25,7 +30,9 @@ targets:
 
     variables:
       catalog_name: dev_catalog
-      schema_name: bronze
+      bronze_schema_name: bronze
+      silver_schema_name: silver
+      gold_schema_name: gold
       contracts_volume_name: contracts_volume
       landing_volume_name: landing
       # catalog_storage_root: "abfss://<container>@<storage-account>.dfs.core.windows.net/dev_catalog"
