@@ -102,6 +102,19 @@ events_path    = f"{LANDING_BASE}/clickstream/events_{timestamp}.json"
 customers_path = f"{LANDING_BASE}/customers/customers_{timestamp}.json"
 
 # COMMAND ----------
+# Clear existing files from the landing subdirectories before writing.
+# This prevents data from accumulating across CI runs — without this,
+# every push would add a new file and bronze tables would grow unbounded
+# since spark.read() reads ALL files in the directory on each pipeline run.
+
+for folder in [f"{LANDING_BASE}/clickstream", f"{LANDING_BASE}/customers"]:
+    try:
+        dbutils.fs.rm(folder, recurse=True)
+        print(f"🧹 Cleared {folder}")
+    except Exception:
+        pass  # Folder may not exist on first run — that's fine
+
+# COMMAND ----------
 
 # Write clickstream events — one JSON object per line (newline-delimited JSON)
 events_ndjson    = "\n".join(json.dumps(e) for e in events)

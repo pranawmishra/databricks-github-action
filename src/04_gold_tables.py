@@ -12,8 +12,6 @@ from pyspark.sql.window import Window
 
 @dlt.table(
     name="daily_traffic_metrics",
-    schema="gold",
-    catalog="dev_catalog",
     comment="Daily session and traffic summary — sessions/day, unique users, avg duration, total events"
 )
 def daily_traffic_metrics():
@@ -34,8 +32,6 @@ def daily_traffic_metrics():
 
 @dlt.table(
     name="funnel_conversion",
-    schema="gold",
-    catalog="dev_catalog",
     comment="Event-type funnel: session counts per stage and conversion rate relative to page_view"
 )
 def funnel_conversion():
@@ -72,8 +68,6 @@ def funnel_conversion():
 
 @dlt.table(
     name="top_pages",
-    schema="gold",
-    catalog="dev_catalog",
     comment="Most-visited pages ranked by view count with unique user reach"
 )
 def top_pages():
