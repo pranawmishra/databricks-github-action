@@ -16,7 +16,7 @@ from pyspark.sql.window import Window
 )
 def daily_traffic_metrics():
     return (
-        dlt.read("sessions")
+        dlt.read("silver.sessions")
         .withColumn("date", F.to_date("session_start"))
         .groupBy("date")
         .agg(
@@ -36,7 +36,7 @@ def daily_traffic_metrics():
 )
 def funnel_conversion():
     # Count distinct sessions that included each event type
-    clickstream = dlt.read("clean_clickstream")
+    clickstream = dlt.read("silver.clean_clickstream")
 
     stage_counts = (
         clickstream
@@ -72,7 +72,7 @@ def funnel_conversion():
 )
 def top_pages():
     return (
-        dlt.read("clean_clickstream")
+        dlt.read("silver.o clean_clickstream")
         .filter(F.col("event_type") == "page_view")
         .groupBy("page_url")
         .agg(

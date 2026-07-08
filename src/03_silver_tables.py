@@ -20,7 +20,7 @@ def clean_clickstream():
     # Deduplicate on event_id — keep the first occurrence by event_time
     window = Window.partitionBy("event_id").orderBy("event_time")
     return (
-        dlt.read("raw_clickstream")
+        dlt.read("bronze.raw_clickstream")
         .withColumn("_row_num", F.row_number().over(window))
         .filter(F.col("_row_num") == 1)
         .drop("_row_num")
@@ -37,7 +37,7 @@ def clean_clickstream():
 )
 def clean_customers():
     return (
-        dlt.read("raw_customers")
+        dlt.read("bronze.raw_customers")
         .filter(F.col("customer_id").isNotNull())
         .withColumn("email", F.lower(F.trim(F.col("email"))))
         .withColumn("processed_at", F.current_timestamp())
@@ -55,7 +55,7 @@ def sessions():
     user_time_window = Window.partitionBy("user_id").orderBy("event_time")
 
     with_lag = (
-        dlt.read("clean_clickstream")
+        dlt.read("silver.clean_clickstream")
         .withColumn(
             "prev_event_time",
             F.lag("event_time").over(user_time_window)
