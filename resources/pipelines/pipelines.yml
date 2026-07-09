@@ -7,9 +7,9 @@ resources:
       serverless: true                   # Run on Databricks serverless compute (no cluster to manage)
       libraries:
         - notebook:
-            path: ../src/clickstream/02_bronze_table.py   # BRONZE — raw_clickstream, raw_customers
+            path: ../../src/clickstream/02_bronze_table.py   # BRONZE — raw_clickstream, raw_customers
         - notebook:
-            path: ../src/clickstream/03_silver_tables.py  # SILVER — clean_clickstream, sessions, clean_customers
+            path: ../../src/clickstream/03_silver_tables.py  # SILVER — clean_clickstream, sessions, clean_customers
         - notebook:
-            path: ../src/clickstream/04_gold_tables.py    # GOLD   — daily_traffic_metrics, funnel_conversion, top_pages
+            path: ../../src/clickstream/04_gold_tables.py    # GOLD   — daily_traffic_metrics, funnel_conversion, top_pages
       continuous: false                  # Triggered mode — pipeline runs once per trigger, not always-on

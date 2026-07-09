@@ -2,10 +2,10 @@ bundle:
   name: dab-demo
 
 include:
-  - resources/job.yml
-  - resources/schemas.yml
-  - resources/volume.yml
-  - resources/pipelines.yml
+  - resources/jobs/*.yml
+  - resources/schemas/*.yml
+  - resources/volumes/*.yml
+  - resources/pipelines/*.yml
   # catalog.yml intentionally excluded — dev_catalog is assumed to pre-exist in the workspace
 
 variables:
