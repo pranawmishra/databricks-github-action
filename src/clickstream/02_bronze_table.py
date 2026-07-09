@@ -33,26 +33,26 @@ customers_schema = StructType([
 
 @dlt.table(
     name="raw_clickstream",
-    comment="Raw clickstream events — append-only, schema-enforced ingestion from landing volume"
+    comment="Raw clickstream events — append-only, schema-enforced ingestion from landing_volume volume"
 )
 def raw_clickstream():
     return (
         spark.read
         .schema(clickstream_schema)
         .format("json")
-        .load("/Volumes/dev_catalog/bronze/landing/clickstream")
+        .load("/Volumes/dev_catalog/bronze/landing_volume/clickstream")
     )
 
 # COMMAND ----------
 
 @dlt.table(
     name="raw_customers",
-    comment="Raw customer records — append-only, schema-enforced ingestion from landing volume"
+    comment="Raw customer records — append-only, schema-enforced ingestion from landing_volume volume"
 )
 def raw_customers():
     return (
         spark.read
         .schema(customers_schema)
         .format("json")
-        .load("/Volumes/dev_catalog/bronze/landing/customers")
+        .load("/Volumes/dev_catalog/bronze/landing_volume/customers")
     )
