@@ -11,7 +11,7 @@ from datetime import datetime, timedelta, timezone
 
 # COMMAND ----------
 
-LANDING_BASE = "/Volumes/dev_catalog/bronze/landing"
+LANDING_BASE = "/Volumes/dev_catalog/bronze/landing_volume"
 NUM_USERS = 50
 NUM_EVENTS = 1_000
 NUM_CUSTOMERS = 100
