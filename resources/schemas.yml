@@ -14,3 +14,8 @@ resources:
       name: ${var.gold_schema_name}
       catalog_name: ${var.catalog_name}
       comment: Gold layer schema — aggregated analytics tables (managed by DAB)
+
+    test_schema:
+      name: ${var.test_schema_name}
+      catalog_name: ${var.test_catalog_name}
+      comment: Test schema — for learning and experimentation (managed by DAB)
