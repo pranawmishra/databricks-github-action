@@ -9,18 +9,27 @@ include:
   # catalog.yml intentionally excluded — dev_catalog is assumed to pre-exist in the workspace
 
 variables:
+  # Catalog defination
   catalog_name:
     description: Unity Catalog Name
+  test_catalog_name:
+    description: Unity Catalog Name for test
+  # Schema defination
+  test_schema_name:
+    description: Test schema name within the catalog
   bronze_schema_name:
     description: Bronze schema name within the catalog
   silver_schema_name:
     description: Silver schema name within the catalog
   gold_schema_name:
     description: Gold schema name within the catalog
+  # Volume defination
   contracts_volume_name:
     description: Contracts Volume name within the schema
   landing_volume_name:
     description: Landing Volume name within the schema
+  test_volume_name:
+    description: Test Volume name within the schema
   # catalog_storage_root:
   #   description: Storage root path for the catalog (must be under a registered UC external location)
 
@@ -29,12 +38,18 @@ targets:
     default: true
 
     variables:
+      # Catalog defination
       catalog_name: dev_catalog
+      test_catalog_name: test_catalog
+      # Schema defination
+      test_schema_name: test_schema
       bronze_schema_name: bronze
       silver_schema_name: silver
       gold_schema_name: gold
+      # Volume defination
       contracts_volume_name: contracts_volume
-      landing_volume_name: landing
+      landing_volume_name: landing_volume
+      test_volume_name: test_volume
       # catalog_storage_root: "abfss://<container>@<storage-account>.dfs.core.windows.net/dev_catalog"
 
     run_as:

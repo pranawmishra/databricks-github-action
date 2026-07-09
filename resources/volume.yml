@@ -7,9 +7,16 @@ resources:
       volume_type: MANAGED                     # MANAGED = Databricks controls the storage location
       comment: Raw file drop zone for contract documents (CSV/JSON/PDF)
 
-    landing:
+    landing_volume:
       catalog_name: ${var.catalog_name}
       schema_name: ${var.bronze_schema_name}  # Same reasoning — landing volume holds raw JSON files written
       name: ${var.landing_volume_name}         # by generate_clickstream.py before DLT reads them
       volume_type: MANAGED
       comment: Raw file drop zone for clickstream events and customer records
+
+    test_volume:
+      catalog_name: ${var.test_catalog_name}
+      schema_name: ${var.test_schema_name}
+      name: ${var.test_volume_name}
+      volume_type: MANAGED
+      comment: Test volume for learning Purposes

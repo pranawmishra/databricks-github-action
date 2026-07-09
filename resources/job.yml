@@ -7,7 +7,7 @@ resources:
         - task_key: generate_data
           description: "Generate synthetic clickstream + customer JSON data into the landing volume"
           notebook_task:
-            notebook_path: ../src/01_generate_clickstream.py
+            notebook_path: ../src/clickstream/01_generate_clickstream.py
 
         - task_key: run_pipeline
           description: "Run the full Bronze → Silver → Gold DLT pipeline"
